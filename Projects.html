@@ -1,0 +1,1297 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects - Portfolio Showcase</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&amp;family=Lato:wght@300;400;700&amp;display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <script src="/_sdk/element_sdk.js"></script>
+  <style>
+        body {
+            box-sizing: border-box;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background: #000000;
+            color: #ffffff;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Animated Background */
+        .particles-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, #000000 0%, #0a0a0a 25%, #1a1a2e 50%, #16213e 75%, #0f3460 100%);
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #00d4ff;
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite;
+            box-shadow: 0 0 10px #00d4ff;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.7; }
+            50% { transform: translateY(-30px) rotate(180deg); opacity: 1; }
+        }
+
+        .grid-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 212, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 212, 255, 0.05) 1px, transparent 1px);
+            background-size: 60px 60px;
+            z-index: -1;
+            animation: gridPulse 6s ease-in-out infinite;
+        }
+
+        @keyframes gridPulse {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 0.4; }
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 212, 255, 0.3);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            font-size: 1.8rem;
+            background: linear-gradient(135deg, #00d4ff, #ffd700, #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+        }
+
+        .nav-links a:hover {
+            color: #00d4ff;
+            background: rgba(0, 212, 255, 0.1);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+        }
+
+        /* Main Container */
+        .main-container {
+            padding-top: 100px;
+            min-height: 100%;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            padding: 4rem 0 3rem;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.05), rgba(255, 215, 0, 0.05));
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .hero-title {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            font-size: 4.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffffff, #00d4ff, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 50px rgba(0, 212, 255, 0.5);
+            animation: textGlow 3s ease-in-out infinite alternate;
+            letter-spacing: -2px;
+        }
+
+        @keyframes textGlow {
+            from {
+                filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.5));
+            }
+            to {
+                filter: drop-shadow(0 0 40px rgba(255, 215, 0, 0.8));
+            }
+        }
+
+        .hero-subtitle {
+            font-family: 'Lato', sans-serif;
+            font-size: 1.3rem;
+            color: #b0b0b0;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        /* Filter Section */
+        .filter-section {
+            padding: 2rem 0 4rem;
+            text-align: center;
+        }
+
+        .filter-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            color: #ffffff;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .filter-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.2), transparent);
+            transition: left 0.6s;
+        }
+
+        .filter-btn:hover::before {
+            left: 100%;
+        }
+
+        .filter-btn:hover {
+            border-color: rgba(0, 212, 255, 0.8);
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.4);
+            transform: translateY(-3px);
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(135deg, #00d4ff, #ffd700);
+            border-color: #ffd700;
+            color: #000000;
+            box-shadow: 0 0 40px rgba(255, 215, 0, 0.6);
+        }
+
+        /* Projects Section */
+        .projects-section {
+            padding: 2rem 0 6rem;
+        }
+
+        .projects-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid rgba(0, 212, 255, 0.2);
+            border-radius: 20px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.5s ease;
+            position: relative;
+            backdrop-filter: blur(15px);
+            height: fit-content;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(255, 215, 0, 0.1));
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: 1;
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
+        }
+
+        .project-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            border-color: rgba(0, 212, 255, 0.8);
+            box-shadow: 
+                0 30px 60px rgba(0, 212, 255, 0.3),
+                0 0 50px rgba(255, 215, 0, 0.2);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image i {
+            font-size: 4rem;
+            color: #00d4ff;
+            z-index: 2;
+            transition: all 0.5s ease;
+        }
+
+        .project-card:hover .project-image i {
+            transform: scale(1.2) rotate(10deg);
+            color: #ffd700;
+        }
+
+        .project-content {
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .project-category {
+            display: inline-block;
+            background: linear-gradient(135deg, #00d4ff, #ffd700);
+            color: #000000;
+            padding: 0.3rem 1rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .project-title {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #ffffff;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .project-description {
+            color: #b0b0b0;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tag {
+            background: rgba(0, 212, 255, 0.2);
+            color: #00d4ff;
+            padding: 0.3rem 0.8rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+        }
+
+        .project-cta {
+            background: transparent;
+            border: 2px solid #00d4ff;
+            color: #00d4ff;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .project-cta:hover {
+            background: #00d4ff;
+            color: #000000;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            animation: modalFadeIn 0.3s ease;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.95), rgba(26, 26, 46, 0.95));
+            margin: 2% auto;
+            padding: 0;
+            border: 2px solid rgba(0, 212, 255, 0.5);
+            border-radius: 25px;
+            width: 90%;
+            max-width: 900px;
+            max-height: 90%;
+            overflow-y: auto;
+            backdrop-filter: blur(20px);
+            animation: modalSlideIn 0.4s ease;
+        }
+
+        @keyframes modalSlideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-header {
+            padding: 2rem 2rem 1rem;
+            border-bottom: 1px solid rgba(0, 212, 255, 0.3);
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-close:hover {
+            background: rgba(255, 107, 107, 0.2);
+            color: #ff6b6b;
+            transform: rotate(90deg);
+        }
+
+        .modal-title {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 2.2rem;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #ffffff, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .modal-category {
+            display: inline-block;
+            background: linear-gradient(135deg, #00d4ff, #ffd700);
+            color: #000000;
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .modal-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .modal-image i {
+            font-size: 6rem;
+            color: #00d4ff;
+            animation: modalIconFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes modalIconFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .modal-description {
+            color: #e0e0e0;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .modal-section {
+            margin-bottom: 2rem;
+        }
+
+        .modal-section h3 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1.3rem;
+            color: #00d4ff;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .modal-tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+        }
+
+        .modal-tech-item {
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            padding: 1rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .modal-tech-item:hover {
+            background: rgba(0, 212, 255, 0.2);
+            border-color: rgba(0, 212, 255, 0.6);
+            transform: translateY(-3px);
+        }
+
+        .modal-tech-item i {
+            font-size: 1.5rem;
+            color: #00d4ff;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-outcomes {
+            list-style: none;
+        }
+
+        .modal-outcomes li {
+            color: #e0e0e0;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .modal-outcomes li i {
+            color: #ffd700;
+            font-size: 1.1rem;
+            margin-top: 0.2rem;
+            flex-shrink: 0;
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s ease;
+        }
+
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s ease;
+        }
+
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-buttons {
+                gap: 0.5rem;
+            }
+
+            .filter-btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.85rem;
+            }
+
+            .modal-content {
+                width: 95%;
+                margin: 5% auto;
+            }
+
+            .modal-body {
+                padding: 1.5rem;
+            }
+
+            .modal-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .project-content {
+                padding: 1.5rem;
+            }
+
+            .modal-tech-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body><!-- Animated Background -->
+  <div class="particles-container" id="particles"></div>
+  <div class="grid-overlay"></div><!-- Navigation -->
+  <nav class="navbar">
+   <div class="nav-container">
+    <div class="logo">
+     PROJECTS
+    </div>
+    <ul class="nav-links">
+     <li><a href="#home">Home</a></li>
+     <li><a href="#projects">Projects</a></li>
+     <li><a href="#about">About</a></li>
+     <li><a href="#contact">Contact</a></li>
+    </ul>
+   </div>
+  </nav>
+  <main class="main-container"><!-- Hero Section -->
+   <section class="hero-section">
+    <div class="hero-container">
+     <h1 class="hero-title fade-in" id="page-title">Projects</h1>
+     <p class="hero-subtitle fade-in" id="page-subtitle">Portfolio Showcase</p>
+    </div>
+   </section><!-- Filter Section -->
+   <section class="filter-section">
+    <div class="filter-container">
+     <div class="filter-buttons fade-in"><button class="filter-btn active" data-filter="all" id="filter-all">All Projects</button> <button class="filter-btn" data-filter="construction" id="filter-construction">Construction</button> <button class="filter-btn" data-filter="web" id="filter-web">Web Development</button> <button class="filter-btn" data-filter="design" id="filter-design">Design</button>
+     </div>
+    </div>
+   </section><!-- Projects Section -->
+   <section id="projects" class="projects-section">
+    <div class="projects-container">
+     <div class="projects-grid" id="projects-grid"><!-- Construction Projects -->
+      <div class="project-card fade-in" data-category="construction" data-project="skyline-tower">
+       <div class="project-image"><i class="fas fa-building"></i>
+       </div>
+       <div class="project-content"><span class="project-category">Construction</span>
+        <h3 class="project-title">Skyline Tower Complex</h3>
+        <p class="project-description">A 45-story mixed-use development featuring residential, commercial, and retail spaces with sustainable design principles.</p>
+        <div class="project-tech"><span class="tech-tag">Project Management</span> <span class="tech-tag">BIM Modeling</span> <span class="tech-tag">Sustainability</span>
+        </div><button class="project-cta">View Details</button>
+       </div>
+      </div>
+      <div class="project-card fade-in" data-category="construction" data-project="urban-bridge">
+       <div class="project-image"><i class="fas fa-road"></i>
+       </div>
+       <div class="project-content"><span class="project-category">Construction</span>
+        <h3 class="project-title">Urban Bridge Infrastructure</h3>
+        <p class="project-description">Modern cable-stayed bridge connecting two major districts, designed for both vehicular and pedestrian traffic.</p>
+        <div class="project-tech"><span class="tech-tag">Civil Engineering</span> <span class="tech-tag">CAD Design</span> <span class="tech-tag">Safety Planning</span>
+        </div><button class="project-cta">View Details</button>
+       </div>
+      </div><!-- Web Development Projects -->
+      <div class="project-card fade-in" data-category="web" data-project="ecommerce-platform">
+       <div class="project-image"><i class="fas fa-shopping-cart"></i>
+       </div>
+       <div class="project-content"><span class="project-category">Web Development</span>
+        <h3 class="project-title">E-Commerce Platform</h3>
+        <p class="project-description">Full-stack e-commerce solution with advanced inventory management, payment processing, and analytics dashboard.</p>
+        <div class="project-tech"><span class="tech-tag">React</span> <span class="tech-tag">Node.js</span> <span class="tech-tag">MongoDB</span> <span class="tech-tag">Stripe API</span>
+        </div><button class="project-cta">View Details</button>
+       </div>
+      </div>
+      <div class="project-card fade-in" data-category="web" data-project="portfolio-website">
+       <div class="project-image"><i class="fas fa-laptop-code"></i>
+       </div>
+       <div class="project-content"><span class="project-category">Web Development</span>
+        <h3 class="project-title">Interactive Portfolio</h3>
+        <p class="project-description">Responsive portfolio website with advanced animations, 3D elements, and dynamic content management system.</p>
+        <div class="project-tech"><span class="tech-tag">HTML5</span> <span class="tech-tag">CSS3</span> <span class="tech-tag">JavaScript</span> <span class="tech-tag">Three.js</span>
+        </div><button class="project-cta">View Details</button>
+       </div>
+      </div>
+      <div class="project-card fade-in" data-category="web" data-project="task-management">
+       <div class="project-image"><i class="fas fa-tasks"></i>
+       </div>
+       <div class="project-content"><span class="project-category">Web Development</span>
+        <h3 class="project-title">Task Management App</h3>
+        <p class="project-description">Collaborative project management tool with real-time updates, team communication, and progress tracking.</p>
+        <div class="project-tech"><span class="tech-tag">Vue.js</span> <span class="tech-tag">Firebase</span> <span class="tech-tag">WebSocket</span> <span class="tech-tag">PWA</span>
+        </div><button class="project-cta">View Details</button>
+       </div>
+      </div><!-- Design Projects -->
+      <div class="project-card fade-in" data-category="design" data-project="brand-identity">
+       <div class="project-image"><i class="fas fa-palette"></i>
+       </div>
+       <div class="project-content"><span class="project-category">Design</span>
+        <h3 class="project-title">Corporate Brand Identity</h3>
+        <p class="project-description">Complete brand redesign including logo, color palette, typography, and marketing materials for tech startup.</p>
+        <div class="project-tech"><span class="tech-tag">Adobe Creative Suite</span> <span class="tech-tag">Figma</span> <span class="tech-tag">Brand Strategy</span>
+        </div><button class="project-cta">View Details</button>
+       </div>
+      </div>
+      <div class="project-card fade-in" data-category="design" data-project="mobile-ui">
+       <div class="project-image"><i class="fas fa-mobile-alt"></i>
+       </div>
+       <div class="project-content"><span class="project-category">Design</span>
+        <h3 class="project-title">Mobile App UI/UX</h3>
+        <p class="project-description">User interface design for fitness tracking mobile application with intuitive navigation and engaging visuals.</p>
+        <div class="project-tech"><span class="tech-tag">UI Design</span> <span class="tech-tag">UX Research</span> <span class="tech-tag">Prototyping</span> <span class="tech-tag">User Testing</span>
+        </div><button class="project-cta">View Details</button>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+  </main><!-- Project Modal -->
+  <div id="project-modal" class="modal">
+   <div class="modal-content">
+    <div class="modal-header"><button class="modal-close">×</button>
+     <h2 class="modal-title" id="modal-title">Project Title</h2><span class="modal-category" id="modal-category">Category</span>
+    </div>
+    <div class="modal-body">
+     <div class="modal-image" id="modal-image"><i class="fas fa-code"></i>
+     </div>
+     <div class="modal-description" id="modal-description">
+      Project description will be displayed here.
+     </div>
+     <div class="modal-section">
+      <h3><i class="fas fa-tools"></i> Technologies Used</h3>
+      <div class="modal-tech-grid" id="modal-tech-grid"><!-- Tech items will be populated here -->
+      </div>
+     </div>
+     <div class="modal-section">
+      <h3><i class="fas fa-trophy"></i> Key Outcomes</h3>
+      <ul class="modal-outcomes" id="modal-outcomes"><!-- Outcomes will be populated here -->
+      </ul>
+     </div>
+    </div>
+   </div>
+  </div>
+  <script>
+        // Configuration object for editable content
+        const defaultConfig = {
+            page_title: "Projects",
+            page_subtitle: "Portfolio Showcase",
+            filter_all: "All Projects",
+            filter_construction: "Construction",
+            filter_web: "Web Development",
+            filter_design: "Design",
+            background_color: "#000000",
+            primary_color: "#00d4ff",
+            accent_color: "#ffd700",
+            text_color: "#ffffff",
+            secondary_color: "#ff6b6b",
+            font_family: "Lato",
+            font_size: 16
+        };
+
+        // Project data
+        const projectData = {
+            'skyline-tower': {
+                title: 'Skyline Tower Complex',
+                category: 'Construction',
+                icon: 'fas fa-building',
+                description: 'A landmark 45-story mixed-use development that redefines urban living. This project combines residential luxury with commercial innovation, featuring sustainable design principles and cutting-edge construction techniques. The complex includes 300 residential units, 50,000 sq ft of retail space, and state-of-the-art amenities.',
+                technologies: [
+                    { name: 'Project Management', icon: 'fas fa-project-diagram' },
+                    { name: 'BIM Modeling', icon: 'fas fa-cube' },
+                    { name: 'Sustainability', icon: 'fas fa-leaf' },
+                    { name: 'Safety Planning', icon: 'fas fa-hard-hat' },
+                    { name: 'Quality Control', icon: 'fas fa-check-circle' },
+                    { name: 'Budget Management', icon: 'fas fa-dollar-sign' }
+                ],
+                outcomes: [
+                    'Completed 6 months ahead of schedule',
+                    'Achieved LEED Gold certification for sustainability',
+                    'Reduced construction costs by 15% through efficient planning',
+                    'Zero safety incidents throughout construction',
+                    'Won "Best Mixed-Use Development" award',
+                    'Generated $2.5M in pre-construction sales'
+                ]
+            },
+            'urban-bridge': {
+                title: 'Urban Bridge Infrastructure',
+                category: 'Construction',
+                icon: 'fas fa-road',
+                description: 'A modern cable-stayed bridge spanning 800 meters, connecting two major city districts. This infrastructure project was designed to handle 50,000 vehicles daily while providing dedicated pedestrian and cycling paths. The bridge features innovative seismic resistance technology and LED lighting systems.',
+                technologies: [
+                    { name: 'Civil Engineering', icon: 'fas fa-drafting-compass' },
+                    { name: 'CAD Design', icon: 'fas fa-ruler-combined' },
+                    { name: 'Safety Planning', icon: 'fas fa-hard-hat' },
+                    { name: 'Structural Analysis', icon: 'fas fa-calculator' },
+                    { name: 'Environmental Impact', icon: 'fas fa-tree' },
+                    { name: 'Traffic Management', icon: 'fas fa-traffic-light' }
+                ],
+                outcomes: [
+                    'Reduced traffic congestion by 40%',
+                    'Improved connectivity between districts',
+                    'Withstood 7.2 magnitude earthquake simulation',
+                    'Featured in International Bridge Engineering Journal',
+                    'Completed within $50M budget',
+                    'Created 500 construction jobs'
+                ]
+            },
+            'ecommerce-platform': {
+                title: 'E-Commerce Platform',
+                category: 'Web Development',
+                icon: 'fas fa-shopping-cart',
+                description: 'A comprehensive e-commerce solution built for scalability and performance. Features include advanced inventory management, multi-payment gateway integration, real-time analytics, customer relationship management, and mobile-responsive design. The platform supports multiple vendors and international transactions.',
+                technologies: [
+                    { name: 'React', icon: 'fab fa-react' },
+                    { name: 'Node.js', icon: 'fab fa-node-js' },
+                    { name: 'MongoDB', icon: 'fas fa-database' },
+                    { name: 'Stripe API', icon: 'fab fa-stripe' },
+                    { name: 'AWS Cloud', icon: 'fab fa-aws' },
+                    { name: 'Redis Cache', icon: 'fas fa-memory' }
+                ],
+                outcomes: [
+                    'Handles 10,000+ concurrent users',
+                    'Achieved 99.9% uptime reliability',
+                    'Processed $5M in transactions (first year)',
+                    'Reduced page load time by 60%',
+                    'Integrated with 15+ payment gateways',
+                    'Mobile conversion rate increased by 45%'
+                ]
+            },
+            'portfolio-website': {
+                title: 'Interactive Portfolio',
+                category: 'Web Development',
+                icon: 'fas fa-laptop-code',
+                description: 'A cutting-edge portfolio website featuring immersive 3D animations, particle systems, and dynamic content management. Built with performance optimization in mind, the site showcases advanced web technologies while maintaining excellent user experience across all devices.',
+                technologies: [
+                    { name: 'HTML5', icon: 'fab fa-html5' },
+                    { name: 'CSS3', icon: 'fab fa-css3-alt' },
+                    { name: 'JavaScript', icon: 'fab fa-js-square' },
+                    { name: 'Three.js', icon: 'fas fa-cube' },
+                    { name: 'GSAP', icon: 'fas fa-play' },
+                    { name: 'WebGL', icon: 'fas fa-eye' }
+                ],
+                outcomes: [
+                    'Achieved 95+ Google PageSpeed score',
+                    'Featured on CSS Design Awards',
+                    'Generated 300% increase in client inquiries',
+                    'Reduced bounce rate by 50%',
+                    'Optimized for all screen sizes',
+                    'Implemented advanced SEO strategies'
+                ]
+            },
+            'task-management': {
+                title: 'Task Management App',
+                category: 'Web Development',
+                icon: 'fas fa-tasks',
+                description: 'A collaborative project management application designed for remote teams. Features real-time collaboration, advanced reporting, time tracking, file sharing, and integration with popular productivity tools. The app supports agile methodologies and custom workflows.',
+                technologies: [
+                    { name: 'Vue.js', icon: 'fab fa-vuejs' },
+                    { name: 'Firebase', icon: 'fas fa-fire' },
+                    { name: 'WebSocket', icon: 'fas fa-plug' },
+                    { name: 'PWA', icon: 'fas fa-mobile-alt' },
+                    { name: 'Chart.js', icon: 'fas fa-chart-bar' },
+                    { name: 'Electron', icon: 'fas fa-desktop' }
+                ],
+                outcomes: [
+                    'Improved team productivity by 35%',
+                    'Supports 1000+ active users',
+                    'Reduced project delivery time by 25%',
+                    'Integrated with 20+ third-party tools',
+                    'Available on web, mobile, and desktop',
+                    'Achieved 4.8/5 user satisfaction rating'
+                ]
+            },
+            'brand-identity': {
+                title: 'Corporate Brand Identity',
+                category: 'Design',
+                icon: 'fas fa-palette',
+                description: 'Complete brand transformation for a technology startup, including logo design, color palette development, typography selection, and comprehensive brand guidelines. The project encompassed digital and print materials, ensuring consistent brand representation across all touchpoints.',
+                technologies: [
+                    { name: 'Adobe Illustrator', icon: 'fas fa-vector-square' },
+                    { name: 'Adobe Photoshop', icon: 'fas fa-image' },
+                    { name: 'Figma', icon: 'fas fa-pen-nib' },
+                    { name: 'Brand Strategy', icon: 'fas fa-lightbulb' },
+                    { name: 'Color Theory', icon: 'fas fa-palette' },
+                    { name: 'Typography', icon: 'fas fa-font' }
+                ],
+                outcomes: [
+                    'Increased brand recognition by 80%',
+                    'Improved customer trust metrics by 45%',
+                    'Created cohesive brand across 50+ touchpoints',
+                    'Reduced design inconsistencies by 90%',
+                    'Generated positive media coverage',
+                    'Supported successful Series A funding round'
+                ]
+            },
+            'mobile-ui': {
+                title: 'Mobile App UI/UX',
+                category: 'Design',
+                icon: 'fas fa-mobile-alt',
+                description: 'User-centered design for a fitness tracking mobile application. The project involved extensive user research, persona development, wireframing, prototyping, and usability testing. The final design focuses on motivation, ease of use, and data visualization.',
+                technologies: [
+                    { name: 'UI Design', icon: 'fas fa-paint-brush' },
+                    { name: 'UX Research', icon: 'fas fa-search' },
+                    { name: 'Prototyping', icon: 'fas fa-drafting-compass' },
+                    { name: 'User Testing', icon: 'fas fa-users' },
+                    { name: 'Sketch', icon: 'fas fa-pencil-alt' },
+                    { name: 'InVision', icon: 'fas fa-eye' }
+                ],
+                outcomes: [
+                    'Increased user engagement by 60%',
+                    'Reduced user onboarding time by 40%',
+                    'Achieved 4.7/5 app store rating',
+                    'Improved task completion rate by 55%',
+                    'Decreased support tickets by 30%',
+                    'Won "Best Fitness App Design" award'
+                ]
+            }
+        };
+
+        // Create animated particles
+        function createParticles() {
+            const container = document.getElementById('particles');
+            const particleCount = 60;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 8 + 's';
+                particle.style.animationDuration = (Math.random() * 4 + 4) + 's';
+                container.appendChild(particle);
+            }
+        }
+
+        // Filter functionality
+        function initializeFilters() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const projectCards = document.querySelectorAll('.project-card');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const filter = button.getAttribute('data-filter');
+                    
+                    // Update active button
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    
+                    // Filter projects
+                    projectCards.forEach(card => {
+                        const category = card.getAttribute('data-category');
+                        if (filter === 'all' || category === filter) {
+                            card.style.display = 'block';
+                            setTimeout(() => {
+                                card.style.opacity = '1';
+                                card.style.transform = 'translateY(0)';
+                            }, 100);
+                        } else {
+                            card.style.opacity = '0';
+                            card.style.transform = 'translateY(20px)';
+                            setTimeout(() => {
+                                card.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                });
+            });
+        }
+
+        // Modal functionality
+        function initializeModal() {
+            const modal = document.getElementById('project-modal');
+            const projectCards = document.querySelectorAll('.project-card');
+            const closeBtn = document.querySelector('.modal-close');
+
+            projectCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    const projectId = card.getAttribute('data-project');
+                    const project = projectData[projectId];
+                    
+                    if (project) {
+                        populateModal(project);
+                        modal.style.display = 'block';
+                        document.body.style.overflow = 'hidden';
+                    }
+                });
+            });
+
+            closeBtn.addEventListener('click', closeModal);
+            
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeModal();
+                }
+            });
+
+            function closeModal() {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        function populateModal(project) {
+            document.getElementById('modal-title').textContent = project.title;
+            document.getElementById('modal-category').textContent = project.category;
+            document.getElementById('modal-description').textContent = project.description;
+            
+            // Update modal image icon
+            const modalImage = document.getElementById('modal-image');
+            modalImage.innerHTML = `<i class="${project.icon}"></i>`;
+            
+            // Populate technologies
+            const techGrid = document.getElementById('modal-tech-grid');
+            techGrid.innerHTML = '';
+            project.technologies.forEach(tech => {
+                const techItem = document.createElement('div');
+                techItem.className = 'modal-tech-item';
+                techItem.innerHTML = `
+                    <i class="${tech.icon}"></i>
+                    <div>${tech.name}</div>
+                `;
+                techGrid.appendChild(techItem);
+            });
+            
+            // Populate outcomes
+            const outcomesList = document.getElementById('modal-outcomes');
+            outcomesList.innerHTML = '';
+            project.outcomes.forEach(outcome => {
+                const li = document.createElement('li');
+                li.innerHTML = `<i class="fas fa-star"></i> ${outcome}`;
+                outcomesList.appendChild(li);
+            });
+        }
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Element SDK Configuration
+        async function onConfigChange(config) {
+            // Update text content
+            const pageTitle = document.getElementById('page-title');
+            if (pageTitle) {
+                pageTitle.textContent = config.page_title || defaultConfig.page_title;
+            }
+
+            const pageSubtitle = document.getElementById('page-subtitle');
+            if (pageSubtitle) {
+                pageSubtitle.textContent = config.page_subtitle || defaultConfig.page_subtitle;
+            }
+
+            const filterAll = document.getElementById('filter-all');
+            if (filterAll) {
+                filterAll.textContent = config.filter_all || defaultConfig.filter_all;
+            }
+
+            const filterConstruction = document.getElementById('filter-construction');
+            if (filterConstruction) {
+                filterConstruction.textContent = config.filter_construction || defaultConfig.filter_construction;
+            }
+
+            const filterWeb = document.getElementById('filter-web');
+            if (filterWeb) {
+                filterWeb.textContent = config.filter_web || defaultConfig.filter_web;
+            }
+
+            const filterDesign = document.getElementById('filter-design');
+            if (filterDesign) {
+                filterDesign.textContent = config.filter_design || defaultConfig.filter_design;
+            }
+
+            // Update colors
+            const backgroundColor = config.background_color || defaultConfig.background_color;
+            const primaryColor = config.primary_color || defaultConfig.primary_color;
+            const accentColor = config.accent_color || defaultConfig.accent_color;
+            const textColor = config.text_color || defaultConfig.text_color;
+            const secondaryColor = config.secondary_color || defaultConfig.secondary_color;
+
+            document.body.style.backgroundColor = backgroundColor;
+            document.body.style.color = textColor;
+
+            // Update CSS custom properties
+            document.documentElement.style.setProperty('--primary-color', primaryColor);
+            document.documentElement.style.setProperty('--accent-color', accentColor);
+            document.documentElement.style.setProperty('--text-color', textColor);
+            document.documentElement.style.setProperty('--secondary-color', secondaryColor);
+
+            // Update font
+            const customFont = config.font_family || defaultConfig.font_family;
+            const baseFontStack = 'Arial, sans-serif';
+            document.body.style.fontFamily = `${customFont}, ${baseFontStack}`;
+
+            // Update font sizes
+            const baseSize = config.font_size || defaultConfig.font_size;
+            document.documentElement.style.fontSize = `${baseSize}px`;
+        }
+
+        function mapToCapabilities(config) {
+            return {
+                recolorables: [
+                    {
+                        get: () => config.background_color || defaultConfig.background_color,
+                        set: (value) => {
+                            if (window.elementSdk) {
+                                window.elementSdk.setConfig({ background_color: value });
+                            }
+                        }
+                    },
+                    {
+                        get: () => config.primary_color || defaultConfig.primary_color,
+                        set: (value) => {
+                            if (window.elementSdk) {
+                                window.elementSdk.setConfig({ primary_color: value });
+                            }
+                        }
+                    },
+                    {
+                        get: () => config.accent_color || defaultConfig.accent_color,
+                        set: (value) => {
+                            if (window.elementSdk) {
+                                window.elementSdk.setConfig({ accent_color: value });
+                            }
+                        }
+                    },
+                    {
+                        get: () => config.text_color || defaultConfig.text_color,
+                        set: (value) => {
+                            if (window.elementSdk) {
+                                window.elementSdk.setConfig({ text_color: value });
+                            }
+                        }
+                    },
+                    {
+                        get: () => config.secondary_color || defaultConfig.secondary_color,
+                        set: (value) => {
+                            if (window.elementSdk) {
+                                window.elementSdk.setConfig({ secondary_color: value });
+                            }
+                        }
+                    }
+                ],
+                borderables: [],
+                fontEditable: {
+                    get: () => config.font_family || defaultConfig.font_family,
+                    set: (value) => {
+                        if (window.elementSdk) {
+                            window.elementSdk.setConfig({ font_family: value });
+                        }
+                    }
+                },
+                fontSizeable: {
+                    get: () => config.font_size || defaultConfig.font_size,
+                    set: (value) => {
+                        if (window.elementSdk) {
+                            window.elementSdk.setConfig({ font_size: value });
+                        }
+                    }
+                }
+            };
+        }
+
+        function mapToEditPanelValues(config) {
+            return new Map([
+                ["page_title", config.page_title || defaultConfig.page_title],
+                ["page_subtitle", config.page_subtitle || defaultConfig.page_subtitle],
+                ["filter_all", config.filter_all || defaultConfig.filter_all],
+                ["filter_construction", config.filter_construction || defaultConfig.filter_construction],
+                ["filter_web", config.filter_web || defaultConfig.filter_web],
+                ["filter_design", config.filter_design || defaultConfig.filter_design]
+            ]);
+        }
+
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
+            initializeFilters();
+            initializeModal();
+        });
+
+        // Initialize Element SDK
+        if (window.elementSdk) {
+            window.elementSdk.init({
+                defaultConfig,
+                onConfigChange,
+                mapToCapabilities,
+                mapToEditPanelValues
+            });
+        }
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'998df71f97557e2c',t:'MTc2MjE5NDg2Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
