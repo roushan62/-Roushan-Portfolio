@@ -478,145 +478,128 @@
             font-size: 0.8rem;
         }
 
-        /* Contact Section */
-        .contact-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-        }
+/* Contact Section */
+.contact-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
 
-        .contact-form {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border-radius: 12px;
-            padding: 2rem;
-            border: 1px solid rgba(0, 180, 255, 0.1);
-        }
+.contact-form {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 2rem;
+  border: 1px solid rgba(0, 180, 255, 0.1);
+}
 
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
+.form-group {
+  margin-bottom: 1.5rem;
+}
 
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: #FFFFFF;
-            font-weight: 500;
-        }
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #FFFFFF;
+  font-weight: 500;
+}
 
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 1rem;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(0, 180, 255, 0.2);
-            border-radius: 8px;
-            color: #FFFFFF;
-            font-family: 'Lato', sans-serif;
-        }
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(0, 180, 255, 0.2);
+  border-radius: 8px;
+  color: #FFFFFF;
+  font-family: 'Lato', sans-serif;
+}
 
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #00B4FF;
-            box-shadow: 0 0 10px rgba(0, 180, 255, 0.3);
-        }
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #00B4FF;
+  box-shadow: 0 0 10px rgba(0, 180, 255, 0.3);
+}
 
-        .contact-info h3 {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            margin-bottom: 2rem;
-            color: #00B4FF;
-        }
+.btn.btn-primary {
+  background: linear-gradient(135deg, #00B4FF, #00FFAA);
+  color: #0D0D0D;
+  font-weight: bold;
+  border: none;
+  padding: 1rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
 
-        .contact-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1.5rem;
-            color: #AAAAAA;
-        }
+.btn.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 20px rgba(0, 180, 255, 0.5);
+}
 
-        .contact-item i {
-            font-size: 1.2rem;
-            color: #00B4FF;
-            margin-right: 1rem;
-            width: 20px;
-        }
+/* Contact Info */
+.contact-info h3 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  color: #00B4FF;
+}
 
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
+.contact-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  color: #AAAAAA;
+}
 
-        .social-link {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            background: rgba(0, 180, 255, 0.1);
-            border-radius: 50%;
-            color: #00B4FF;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
+.contact-item i {
+  font-size: 1.2rem;
+  color: #00B4FF;
+  margin-right: 1rem;
+  width: 20px;
+}
 
-        .social-link:hover {
-            background: linear-gradient(135deg, #00B4FF, #FFD700);
-            color: #0D0D0D;
-            transform: translateY(-2px);
-        }
+/* Social Icons */
+.social-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
 
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background: rgba(0, 180, 255, 0.1);
+  border-radius: 50%;
+  color: #00B4FF;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
 
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
-        }
+.social-link:hover {
+  background: linear-gradient(135deg, #00B4FF, #FFD700);
+  color: #0D0D0D;
+  transform: translateY(-2px);
+}
 
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+/* Responsive */
+@media (max-width: 768px) {
+  .contact-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .contact-info {
+    text-align: center;
+  }
+  .social-links {
+    justify-content: center;
+  }
+}
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .about-content,
-            .skills-container,
-            .contact-container {
-                grid-template-columns: 1fr;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .section {
-                padding: 3rem 1rem;
-            }
-        }
-    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -807,37 +790,73 @@
      </div>
     </div>
    </div>
-  </section><!-- Contact Section -->
-  <section id="contact" class="section">
-   <h2 class="section-title">Let's Work Together</h2>
-   <div class="contact-container">
+<!-- Contact Section -->
+<section id="contact" class="section">
+  <h2 class="section-title">Let's Work Together</h2>
+  <div class="contact-container">
+
+    <!-- Contact Form -->
     <div class="contact-form">
-     <form id="contact-form">
-      <div class="form-group"><label for="name">Full Name</label> <input type="text" id="name" name="name" required>
-      </div>
-      <div class="form-group"><label for="email">Email Address</label> <input type="email" id="email" name="email" required>
-      </div>
-      <div class="form-group"><label for="company">Company</label> <input type="text" id="company" name="company">
-      </div>
-      <div class="form-group"><label for="message">Project Details</label> <textarea id="message" name="message" rows="5" required></textarea>
-      </div><button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
-     </form>
+      <form action="contact.php" method="POST" id="contact-form">
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="company">Company</label>
+          <input type="text" id="company" name="company">
+        </div>
+
+        <div class="form-group">
+          <label for="message">Project Details</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+      </form>
     </div>
+
+    <!-- Contact Info -->
     <div class="contact-info">
-     <h3>Get In Touch</h3>
-     <div class="contact-item"><i class="fas fa-envelope"></i> <span id="contact-email">rktech624@gmail.com</span>  
-     <div class="contact-item"><i class="fas fa-envelope"></i> <span id="contact-email">roushank2515@gmail.com</span>
-     </div>
-     <div class="contact-item"><i class="fas fa-phone"></i> <span id="contact-phone">+91- 6204782131</span>
-     </div>
-     <div class="contact-item"><i class="fas fa-map-marker-alt"></i> <span>Available for Remote &amp; On-site Projects</span>
-     </div>
-     <div class="social-links"><a href="#" class="social-link" id="linkedin-link"> <i class="fab fa-linkedin-in"></i> </a> <a href="https://www.linkedin.com/in/roushan-kumar-7bb400239?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BqPMWR2E%2BQoGnanudhZLaAg%3D%3D" class="social-link"> <i class="fab fa-github"></i> </a> <a href="https://github.com/roushan62" class="social-link"> <i class="fab fa-behance"></i> </a> <a href="#" class="social-link"> <i class="fas fa-file-pdf"></i> </a>
-     </div>
+      <h3>Get In Touch</h3>
+
+      <div class="contact-item">
+        <i class="fas fa-envelope"></i>
+        <span>rktech624@gmail.com</span>
+      </div>
+
+      <div class="contact-item">
+        <i class="fas fa-envelope"></i>
+        <span>roushank2515@gmail.com</span>
+      </div>
+
+      <div class="contact-item">
+        <i class="fas fa-phone"></i>
+        <span>+91-6204782131</span>
+      </div>
+
+      <div class="contact-item">
+        <i class="fas fa-map-marker-alt"></i>
+        <span>Available for Remote & On-site Projects</span>
+      </div>
+
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/roushan-kumar-7bb400239" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://github.com/roushan62" class="social-link"><i class="fab fa-github"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-behance"></i></a>
+        <a href="#" class="social-link"><i class="fas fa-file-pdf"></i></a>
+      </div>
     </div>
-   </div>
-  </section>
-  <script>
+
+  </div>
+</section>
+
         // Configuration object for editable content
         const defaultConfig = {
             hero_headline: "Crafting Digital & Industrial Excellence",
