@@ -6,7 +6,6 @@
   <title>Awards &amp; Certificates - Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&amp;family=Lato:wght@300;400;700&amp;display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-  <script src="/_sdk/element_sdk.js"></script>
   <style>
         body {
             box-sizing: border-box;
@@ -54,19 +53,19 @@
 
         @keyframes particleFloat {
             0%, 100% { 
-                transform: translateY(0px) translateX(0px) rotate(0deg); 
+                transform: translateY(0px) translateX(0px); 
                 opacity: 0.3; 
             }
             25% { 
-                transform: translateY(-40px) translateX(20px) rotate(90deg); 
+                transform: translateY(-40px) translateX(20px); 
                 opacity: 0.8; 
             }
             50% { 
-                transform: translateY(-20px) translateX(-30px) rotate(180deg); 
+                transform: translateY(-20px) translateX(-30px); 
                 opacity: 1; 
             }
             75% { 
-                transform: translateY(-60px) translateX(10px) rotate(270deg); 
+                transform: translateY(-60px) translateX(10px); 
                 opacity: 0.6; 
             }
         }
@@ -284,43 +283,33 @@
             border-radius: 20px;
             padding: 2rem;
             cursor: pointer;
-            transition: all 0.6s ease;
+            transition: all 0.4s ease;
             position: relative;
             backdrop-filter: blur(15px);
-            transform-style: preserve-3d;
-            perspective: 1000px;
+            overflow: hidden;
         }
 
         .certificate-card::before {
             content: '';
             position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, #ffd700, #00d4ff, #ffd700, #00d4ff);
-            border-radius: 20px;
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.6s ease;
-            animation: borderRotate 4s linear infinite;
-        }
-
-        @keyframes borderRotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+            transition: left 0.6s ease;
         }
 
         .certificate-card:hover::before {
-            opacity: 1;
+            left: 100%;
         }
 
         .certificate-card:hover {
-            transform: rotateY(5deg) rotateX(5deg) translateY(-10px);
             border-color: rgba(255, 215, 0, 0.8);
             box-shadow: 
-                0 25px 50px rgba(255, 215, 0, 0.3),
-                0 0 50px rgba(0, 212, 255, 0.2);
+                0 15px 30px rgba(255, 215, 0, 0.2),
+                0 0 30px rgba(0, 212, 255, 0.1);
+            transform: translateY(-8px);
         }
 
         .certificate-icon {
@@ -334,29 +323,14 @@
             margin: 0 auto 1.5rem;
             font-size: 2rem;
             color: #000000;
-            transition: all 0.5s ease;
+            transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
         }
 
-        .certificate-icon::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-            transition: left 0.6s;
-        }
-
-        .certificate-card:hover .certificate-icon::before {
-            left: 100%;
-        }
-
         .certificate-card:hover .certificate-icon {
-            transform: scale(1.1) rotate(10deg);
-            box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
         }
 
         .certificate-title {
@@ -443,12 +417,12 @@
             width: 45%;
             position: relative;
             backdrop-filter: blur(15px);
-            transition: all 0.5s ease;
+            transition: all 0.4s ease;
         }
 
         .award-content:hover {
             border-color: rgba(255, 215, 0, 0.8);
-            box-shadow: 0 20px 40px rgba(255, 215, 0, 0.2);
+            box-shadow: 0 15px 30px rgba(255, 215, 0, 0.2);
             transform: translateY(-5px);
         }
 
@@ -485,13 +459,13 @@
             color: #000000;
             position: relative;
             z-index: 10;
-            transition: all 0.5s ease;
-            box-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
+            transition: all 0.4s ease;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
         }
 
         .award-item:hover .award-icon-container {
-            transform: scale(1.1) rotate(10deg);
-            box-shadow: 0 0 50px rgba(255, 215, 0, 0.8);
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
         }
 
         .award-title {
@@ -621,14 +595,14 @@
             }
         }
     </style>
-  <style>@view-transition { navigation: auto; }</style>
-  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
-  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
  </head>
- <body><!-- Animated Background -->
+ <body>
+  <!-- Animated Background -->
   <div class="particles-container" id="particles"></div>
   <div class="light-streaks" id="lightStreaks"></div>
-  <div class="grid-overlay"></div><!-- Navigation -->
+  <div class="grid-overlay"></div>
+  
+  <!-- Navigation -->
   <nav class="navbar">
    <div class="nav-container">
     <div class="logo">
@@ -642,13 +616,17 @@
     </ul>
    </div>
   </nav>
-  <main class="main-container"><!-- Hero Section -->
+  
+  <main class="main-container">
+   <!-- Hero Section -->
    <section class="hero-section">
     <div class="hero-container">
      <h1 class="hero-title fade-in" id="page-title">Awards &amp; Certificates</h1>
      <p class="hero-subtitle fade-in" id="page-subtitle">Recognition &amp; Achievements</p>
     </div>
-   </section><!-- Certificates Section -->
+   </section>
+   
+   <!-- Certificates Section -->
    <section id="certificates" class="certificates-section">
     <div class="section-container">
      <h2 class="section-title fade-in" id="certificates-section-title">Professional Certificates</h2>
@@ -727,7 +705,9 @@
       </div>
      </div>
     </div>
-   </section><!-- Awards Section -->
+   </section>
+   
+   <!-- Awards Section -->
    <section id="awards" class="awards-section">
     <div class="section-container">
      <h2 class="section-title fade-in" id="awards-section-title">Awards &amp; Recognition</h2>
@@ -821,22 +801,8 @@
     </div>
    </section>
   </main>
+  
   <script>
-        // Configuration object for editable content
-        const defaultConfig = {
-            page_title: "Awards & Certificates",
-            page_subtitle: "Recognition & Achievements",
-            certificates_section_title: "Professional Certificates",
-            awards_section_title: "Awards & Recognition",
-            background_color: "#000000",
-            primary_color: "#ffd700",
-            secondary_color: "#00d4ff",
-            text_color: "#ffffff",
-            accent_color: "#ff6b6b",
-            font_family: "Lato",
-            font_size: 16
-        };
-
         // Create animated particles
         function createParticles() {
             const container = document.getElementById('particles');
@@ -901,164 +867,11 @@
             });
         });
 
-        // Certificate card tilt effect enhancement
-        document.querySelectorAll('.certificate-card').forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                
-                const rotateX = (y - centerY) / 10;
-                const rotateY = (centerX - x) / 10;
-                
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
-            });
-            
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
-            });
-        });
-
-        // Element SDK Configuration
-        async function onConfigChange(config) {
-            // Update text content
-            const pageTitle = document.getElementById('page-title');
-            if (pageTitle) {
-                pageTitle.textContent = config.page_title || defaultConfig.page_title;
-            }
-
-            const pageSubtitle = document.getElementById('page-subtitle');
-            if (pageSubtitle) {
-                pageSubtitle.textContent = config.page_subtitle || defaultConfig.page_subtitle;
-            }
-
-            const certificatesSectionTitle = document.getElementById('certificates-section-title');
-            if (certificatesSectionTitle) {
-                certificatesSectionTitle.textContent = config.certificates_section_title || defaultConfig.certificates_section_title;
-            }
-
-            const awardsSectionTitle = document.getElementById('awards-section-title');
-            if (awardsSectionTitle) {
-                awardsSectionTitle.textContent = config.awards_section_title || defaultConfig.awards_section_title;
-            }
-
-            // Update colors
-            const backgroundColor = config.background_color || defaultConfig.background_color;
-            const primaryColor = config.primary_color || defaultConfig.primary_color;
-            const secondaryColor = config.secondary_color || defaultConfig.secondary_color;
-            const textColor = config.text_color || defaultConfig.text_color;
-            const accentColor = config.accent_color || defaultConfig.accent_color;
-
-            document.body.style.backgroundColor = backgroundColor;
-            document.body.style.color = textColor;
-
-            // Update CSS custom properties for dynamic color changes
-            document.documentElement.style.setProperty('--primary-color', primaryColor);
-            document.documentElement.style.setProperty('--secondary-color', secondaryColor);
-            document.documentElement.style.setProperty('--text-color', textColor);
-            document.documentElement.style.setProperty('--accent-color', accentColor);
-
-            // Update font
-            const customFont = config.font_family || defaultConfig.font_family;
-            const baseFontStack = 'Arial, sans-serif';
-            document.body.style.fontFamily = `${customFont}, ${baseFontStack}`;
-
-            // Update font sizes proportionally
-            const baseSize = config.font_size || defaultConfig.font_size;
-            document.documentElement.style.fontSize = `${baseSize}px`;
-        }
-
-        function mapToCapabilities(config) {
-            return {
-                recolorables: [
-                    {
-                        get: () => config.background_color || defaultConfig.background_color,
-                        set: (value) => {
-                            if (window.elementSdk) {
-                                window.elementSdk.setConfig({ background_color: value });
-                            }
-                        }
-                    },
-                    {
-                        get: () => config.primary_color || defaultConfig.primary_color,
-                        set: (value) => {
-                            if (window.elementSdk) {
-                                window.elementSdk.setConfig({ primary_color: value });
-                            }
-                        }
-                    },
-                    {
-                        get: () => config.secondary_color || defaultConfig.secondary_color,
-                        set: (value) => {
-                            if (window.elementSdk) {
-                                window.elementSdk.setConfig({ secondary_color: value });
-                            }
-                        }
-                    },
-                    {
-                        get: () => config.text_color || defaultConfig.text_color,
-                        set: (value) => {
-                            if (window.elementSdk) {
-                                window.elementSdk.setConfig({ text_color: value });
-                            }
-                        }
-                    },
-                    {
-                        get: () => config.accent_color || defaultConfig.accent_color,
-                        set: (value) => {
-                            if (window.elementSdk) {
-                                window.elementSdk.setConfig({ accent_color: value });
-                            }
-                        }
-                    }
-                ],
-                borderables: [],
-                fontEditable: {
-                    get: () => config.font_family || defaultConfig.font_family,
-                    set: (value) => {
-                        if (window.elementSdk) {
-                            window.elementSdk.setConfig({ font_family: value });
-                        }
-                    }
-                },
-                fontSizeable: {
-                    get: () => config.font_size || defaultConfig.font_size,
-                    set: (value) => {
-                        if (window.elementSdk) {
-                            window.elementSdk.setConfig({ font_size: value });
-                        }
-                    }
-                }
-            };
-        }
-
-        function mapToEditPanelValues(config) {
-            return new Map([
-                ["page_title", config.page_title || defaultConfig.page_title],
-                ["page_subtitle", config.page_subtitle || defaultConfig.page_subtitle],
-                ["certificates_section_title", config.certificates_section_title || defaultConfig.certificates_section_title],
-                ["awards_section_title", config.awards_section_title || defaultConfig.awards_section_title]
-            ]);
-        }
-
         // Initialize everything
         document.addEventListener('DOMContentLoaded', () => {
             createParticles();
             createLightStreaks();
         });
-
-        // Initialize Element SDK
-        if (window.elementSdk) {
-            window.elementSdk.init({
-                defaultConfig,
-                onConfigChange,
-                mapToCapabilities,
-                mapToEditPanelValues
-            });
-        }
     </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'998dfa02e5e87e2c',t:'MTc2MjE5NDk4MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ </body>
 </html>
